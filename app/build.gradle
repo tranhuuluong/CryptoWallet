@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -8,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId "com.luongtran.cryptowallet"
-        minSdk 21
-        targetSdk 30
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -32,12 +33,24 @@ android {
 }
 
 dependencies {
+    implementation deps.core_ktx
+    implementation deps.app_compat
+    implementation deps.marterial_components
+    implementation deps.constraint_layout
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation deps.livedata
+    implementation deps.viewmodel
+    implementation deps.navigation_fragment
+    implementation deps.navigation_ui
+
+    implementation deps.glide
+    implementation deps.glide_compiler
+    implementation deps.retrofit
+    implementation deps.gson_converter
+    implementation deps.okhttp
+    implementation deps.koin
+
+    testImplementation deps.junit
+    androidTestImplementation deps.test_junit
+    androidTestImplementation deps.expresso_core
 }
