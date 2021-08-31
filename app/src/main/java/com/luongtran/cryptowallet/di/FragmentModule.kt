@@ -8,7 +8,7 @@ import org.koin.dsl.module
 /**
  * Created by LuongTran on 31/08/2021.
  */
-val fragmentModules = module {
-    viewModel { HomeViewModel() }
+val fragmentModule = module {
+    viewModel { HomeViewModel(get()) }
     viewModel { SearchViewModel() }
 }

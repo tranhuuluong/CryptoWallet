@@ -15,6 +15,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private val viewModel: SearchViewModel by viewModel()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycle.addObserver(mainViewModel)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()

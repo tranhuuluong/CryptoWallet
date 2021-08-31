@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -33,6 +34,14 @@ android {
     buildFeatures {
         viewBinding true
     }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            // Enable experimental coroutines APIs, including Flow
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+            freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
+        }
+    }
 }
 
 dependencies {
@@ -45,6 +54,9 @@ dependencies {
     implementation deps.viewmodel
     implementation deps.navigation_fragment
     implementation deps.navigation_ui
+    implementation deps.room
+    implementation deps.room_ktx
+    kapt deps.room_compiler
 
     implementation deps.glide
     implementation deps.glide_compiler

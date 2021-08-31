@@ -16,11 +16,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModel()
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycle.addObserver(mainViewModel)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
-
-        Log.d("debugTag", "$viewModel")
+        observeData()
     }
 
     private fun setupUI() {
@@ -28,6 +33,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             btOpenSearch.setOnClickListener {
                 openSearch()
             }
+        }
+    }
+
+    private fun observeData() {
+        viewModel.data.observe(viewLifecycleOwner) {
+            Log.d("debugTag", "$it")
         }
     }
 
