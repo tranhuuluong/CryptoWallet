@@ -1,8 +1,8 @@
 package com.luongtran.cryptowallet.domain
 
+import com.luongtran.cryptowallet.domain.model.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import com.luongtran.cryptowallet.domain.model.Result
 
 /**
  * Created by LuongTran on 31/08/2021.

@@ -1,11 +1,11 @@
-package com.luongtran.cryptowallet.data
+package com.luongtran.cryptowallet.data.content
 
 import com.luongtran.cryptowallet.data.db.CryptoDao
 import com.luongtran.cryptowallet.data.network.CryptoService
+import com.luongtran.cryptowallet.domain.content.CryptoRepository
 import com.luongtran.cryptowallet.domain.mapper.toCrypto
 import com.luongtran.cryptowallet.domain.mapper.toCryptoEntity
 import com.luongtran.cryptowallet.domain.model.Crypto
-import com.luongtran.cryptowallet.domain.repository.CryptoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

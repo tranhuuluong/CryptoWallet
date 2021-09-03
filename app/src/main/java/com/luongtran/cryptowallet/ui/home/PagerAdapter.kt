@@ -1,8 +1,9 @@
 package com.luongtran.cryptowallet.ui.home
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.luongtran.cryptowallet.ui.home.btc.BtcFragment
+import com.luongtran.cryptowallet.ui.home.favorite.FavoriteFragment
 
 /**
  * Created by LuongTran on 03/09/2021.

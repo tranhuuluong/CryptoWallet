@@ -19,7 +19,7 @@ data class CryptoEntity(
     @ColumnInfo(name = COLUMN_ICON)
     val icon: String?,
     @ColumnInfo(name = COLUMN_NAME)
-    val name: String?,
+    val name: String?
 ) {
     companion object {
         const val TABLE_NAME = "crypto"

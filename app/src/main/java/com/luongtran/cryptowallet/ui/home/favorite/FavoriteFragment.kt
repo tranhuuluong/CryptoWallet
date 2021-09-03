@@ -1,4 +1,4 @@
-package com.luongtran.cryptowallet.ui.home
+package com.luongtran.cryptowallet.ui.home.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

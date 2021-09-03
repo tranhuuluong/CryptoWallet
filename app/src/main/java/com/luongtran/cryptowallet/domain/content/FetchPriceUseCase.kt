@@ -1,7 +1,6 @@
-package com.luongtran.cryptowallet.domain.usecase
+package com.luongtran.cryptowallet.domain.content
 
 import com.luongtran.cryptowallet.domain.UseCase
-import com.luongtran.cryptowallet.domain.repository.CryptoRepository
 import kotlinx.coroutines.CoroutineDispatcher
 
 /**

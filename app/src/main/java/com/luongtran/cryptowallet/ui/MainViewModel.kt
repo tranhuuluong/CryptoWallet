@@ -1,9 +1,11 @@
 package com.luongtran.cryptowallet.ui
 
 import androidx.lifecycle.*
-import com.luongtran.cryptowallet.domain.usecase.FetchPriceUseCase
-import com.luongtran.cryptowallet.util.interval
+import com.luongtran.cryptowallet.domain.content.FetchPriceUseCase
 import com.luongtran.cryptowallet.domain.model.Result
+import com.luongtran.cryptowallet.domain.user.FetchFavoriteUseCase
+import com.luongtran.cryptowallet.domain.user.UpdateFavoriteUseCase
+import com.luongtran.cryptowallet.util.interval
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -11,7 +13,9 @@ import kotlinx.coroutines.launch
  * Created by LuongTran on 31/08/2021.
  */
 class MainViewModel(
-    private val fetchPricesUseCase: FetchPriceUseCase
+    private val fetchPricesUseCase: FetchPriceUseCase,
+    private val fetchFavoriteUseCase: FetchFavoriteUseCase,
+    private val updateFavoriteUseCase: UpdateFavoriteUseCase
 ) : ViewModel(), LifecycleObserver {
     private var shouldRefresh = false
 
@@ -37,9 +41,26 @@ class MainViewModel(
         }
     }.asLiveData()
 
-    fun refreshPrices() {
+    fun refresh() {
+        refreshPrices()
+        fetchFavorites()
+    }
+
+    private fun refreshPrices() {
         viewModelScope.launch {
             _fetchFlow.emit(Unit)
+        }
+    }
+
+    fun fetchFavorites() {
+        viewModelScope.launch {
+            fetchFavoriteUseCase(Unit)
+        }
+    }
+
+    fun toggleFavorite(id: String, isFavorite: Boolean) {
+        viewModelScope.launch {
+            updateFavoriteUseCase(id to isFavorite)
         }
     }
 

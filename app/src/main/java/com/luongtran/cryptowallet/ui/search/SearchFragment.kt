@@ -23,7 +23,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
-        Log.d("debugTag", "$viewModel")
+        Log.d("debugTag", "$mainViewModel")
     }
 
     private fun setupUI() {

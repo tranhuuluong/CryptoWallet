@@ -1,6 +1,5 @@
-package com.luongtran.cryptowallet.domain.repository
+package com.luongtran.cryptowallet.domain.content
 
-import com.luongtran.cryptowallet.data.network.response.CryptoResponse
 import com.luongtran.cryptowallet.domain.model.Crypto
 import kotlinx.coroutines.flow.Flow
 

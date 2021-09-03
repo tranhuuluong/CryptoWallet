@@ -5,23 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.luongtran.cryptowallet.databinding.FragmentHomeBinding
 import com.luongtran.cryptowallet.databinding.ItemTabBinding
 import com.luongtran.cryptowallet.ui.BaseFragment
 import com.luongtran.cryptowallet.util.round
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random
 
 /**
  * Created by LuongTran on 31/08/2021.
  */
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-    private val viewModel: HomeViewModel by viewModel()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(mainViewModel)
@@ -30,7 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
-        observeData()
+        Log.d("debugTag", "$mainViewModel")
     }
 
     private fun setupUI() {
@@ -52,13 +47,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }.attach()
 
             tvBalance.text = "${randomBalance().round(2)} $"
-
-        }
-    }
-
-    private fun observeData() {
-        viewModel.data.observe(viewLifecycleOwner) {
-            Log.d("debugTag", "$it")
         }
     }
 
