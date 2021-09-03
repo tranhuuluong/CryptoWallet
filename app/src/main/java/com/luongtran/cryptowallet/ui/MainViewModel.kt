@@ -35,7 +35,7 @@ class MainViewModel(
         }.catch { e ->
             emit(Result.Error(e))
         }
-    }
+    }.asLiveData()
 
     fun refreshPrices() {
         viewModelScope.launch {
