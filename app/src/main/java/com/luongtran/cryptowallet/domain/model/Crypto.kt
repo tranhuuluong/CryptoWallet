@@ -11,7 +11,7 @@ data class Crypto(
     val sellPrice: String,
     val icon: String?,
     val name: String?,
-    var isFavorite: Boolean
+    val isFavorite: Boolean
 ) {
     companion object {
         val DIFF_UTIL = object: DiffUtil.ItemCallback<Crypto>() {

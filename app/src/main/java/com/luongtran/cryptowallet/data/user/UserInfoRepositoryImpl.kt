@@ -22,8 +22,9 @@ class UserInfoRepositoryImpl(
 
     override suspend fun fetchFavorites() {
         //fetch favorites from server
+        val response = listOf("BTC", "BCH")
 
-        saveFavorites(listOf("BTC", "BCH"))
+        saveFavorites(response)
     }
 
     override suspend fun getFavorites(): Flow<Set<String>> {

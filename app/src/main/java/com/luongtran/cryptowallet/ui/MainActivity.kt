@@ -1,7 +1,6 @@
 package com.luongtran.cryptowallet.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.luongtran.cryptowallet.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

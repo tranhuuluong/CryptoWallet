@@ -81,6 +81,6 @@ class MainViewModel(
 
     companion object {
         const val DEFAULT_COUNTER = "USD"
-        const val REFRESH_INTERVAL = 5000L
+        const val REFRESH_INTERVAL = 30000L
     }
 }

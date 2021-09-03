@@ -22,9 +22,7 @@ class GetPriceUseCase(
         val dataFlow = combine(cryptoRepository.getPrices(), userInfoRepository.getFavorites()) { data, favourites -> data to favourites }
             .map { (data, favourites) ->
                 data.map { crypto ->
-                    crypto.apply {
-                        isFavorite = favourites.contains(crypto.baseName)
-                    }
+                    crypto.copy(isFavorite = favourites.contains(crypto.baseName))
                 }
             }
 

@@ -6,4 +6,6 @@
 
     <dimen name="text_size_normal">14sp</dimen>
     <dimen name="text_size_large">25sp</dimen>
+
+    <dimen name="icon_size_small">24dp</dimen>
 </resources>

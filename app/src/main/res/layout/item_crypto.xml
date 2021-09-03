@@ -66,8 +66,8 @@
 
     <androidx.appcompat.widget.AppCompatToggleButton
         android:id="@+id/tg_favorite"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/icon_size_small"
+        android:layout_height="@dimen/icon_size_small"
         android:background="@drawable/ic_favorite"
         android:checked="false"
         android:text="@null"

@@ -1,4 +1,4 @@
-package com.luongtran.cryptowallet.ui.home.btc
+package com.luongtran.cryptowallet.ui.home.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -6,16 +6,16 @@ import com.luongtran.cryptowallet.domain.content.GetPriceUseCase
 import com.luongtran.cryptowallet.domain.model.Crypto
 import com.luongtran.cryptowallet.domain.model.Result
 import kotlinx.coroutines.flow.filterIsInstance
-import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.map
 
 /**
- * Created by LuongTran on 31/08/2021.
+ * Created by LuongTran on 03/09/2021.
  */
-class BtcViewModel(
-    getPricesUseCase: GetPriceUseCase
+class FavoriteViewModel(
+    getPriceUseCase: GetPriceUseCase
 ) : ViewModel() {
-    val data = getPricesUseCase(Unit)
+    val data = getPriceUseCase(Unit)
         .filterIsInstance<Result.Success<List<Crypto>>>()
-        .mapLatest { it.data }
+        .map { it.data.filter { crypto -> crypto.isFavorite } }
         .asLiveData()
 }
