@@ -7,6 +7,7 @@ import com.luongtran.cryptowallet.data.user.UserInfoRepositoryImpl
 import com.luongtran.cryptowallet.domain.content.CryptoRepository
 import com.luongtran.cryptowallet.domain.content.FetchPriceUseCase
 import com.luongtran.cryptowallet.domain.content.GetPriceUseCase
+import com.luongtran.cryptowallet.domain.search.SearchUseCase
 import com.luongtran.cryptowallet.domain.user.FetchFavoriteUseCase
 import com.luongtran.cryptowallet.domain.user.UpdateFavoriteUseCase
 import com.luongtran.cryptowallet.domain.user.UserInfoRepository
@@ -62,6 +63,14 @@ val appModules = module {
 
     single {
         UpdateFavoriteUseCase(
+            userInfoRepository = get(),
+            ioDispatcher = get(qualifier(Qualifiers.IO_DISPATCHER))
+        )
+    }
+
+    single {
+        SearchUseCase(
+            cryptoRepository = get(),
             userInfoRepository = get(),
             ioDispatcher = get(qualifier(Qualifiers.IO_DISPATCHER))
         )

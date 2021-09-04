@@ -4,14 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.luongtran.cryptowallet.R
 import com.luongtran.cryptowallet.databinding.FragmentSearchBinding
-import com.luongtran.cryptowallet.ui.BaseFragment
+import com.luongtran.cryptowallet.ui.home.BaseListingFragment
+import com.luongtran.cryptowallet.util.addItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Created by LuongTran on 31/08/2021.
  */
-class SearchFragment : BaseFragment<FragmentSearchBinding>() {
+class SearchFragment : BaseListingFragment<FragmentSearchBinding>() {
     private val viewModel: SearchViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +32,50 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
+        observeData()
     }
 
     private fun setupUI() {
+        binding?.run {
+            tvCancel.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
+            ivClearSearch.setOnClickListener {
+                etSearch.text = null
+            }
+
+            etSearch.doAfterTextChanged { keyword ->
+                ivClearSearch.isGone = keyword.isNullOrEmpty()
+                viewModel.search(keyword?.toString() ?: "")
+            }
+
+            rvCrypto.run {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = cryptoAdapter
+                addItemDecoration(R.drawable.divider, RecyclerView.VERTICAL)
+            }
+        }
+    }
+
+    private fun observeData() {
+        viewModel.data.observe(viewLifecycleOwner) {
+            binding?.tvNoResults?.isVisible = it.isNullOrEmpty()
+            cryptoAdapter.submitList(it)
+        }
+    }
+
+    override fun onPause() {
+        dismissKeyboard(binding!!.etSearch)
+        super.onPause()
+    }
+
+    private fun showKeyboard(view: View) {
+        ViewCompat.getWindowInsetsController(view)?.show(WindowInsetsCompat.Type.ime())
+    }
+
+    private fun dismissKeyboard(view: View) {
+        ViewCompat.getWindowInsetsController(view)?.hide(WindowInsetsCompat.Type.ime())
     }
 
     override fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSearchBinding {

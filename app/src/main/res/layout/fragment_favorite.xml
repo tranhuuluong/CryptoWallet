@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:drawablePadding="@dimen/space_normal"
         android:gravity="center"
-        android:text="Add Favorite"
+        android:text="@string/add_favorite"
         android:textColor="@color/teal_700"
         android:textSize="@dimen/text_size_large"
         app:drawableStartCompat="@drawable/ic_add_favorite"

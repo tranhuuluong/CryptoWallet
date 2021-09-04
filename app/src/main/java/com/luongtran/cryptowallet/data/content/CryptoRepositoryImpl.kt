@@ -27,4 +27,14 @@ class CryptoRepositoryImpl(
             entities.map { it.toCrypto() }
         }
     }
+
+    override fun search(keyword: String): Flow<List<Crypto>> {
+        return if (keyword.isEmpty()) {
+            cryptoDao.getAll()
+        } else {
+            cryptoDao.search("%$keyword%")
+        }.map { list ->
+            list.map { it.toCrypto() }
+        }
+    }
 }

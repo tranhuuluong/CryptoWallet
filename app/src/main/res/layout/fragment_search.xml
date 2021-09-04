@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="Autofill, ContentDescription">
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Fragment"
-        android:textSize="30sp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/space_normal" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/space_normal" />
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="@id/space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_normal"
+        android:text="@string/cancel"
+        android:textAppearance="@style/AppTextAppearance.SemiBold"
+        android:textColor="@color/white"
+        app:layout_constraintBaseline_toBaselineOf="@id/et_search"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end" />
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_normal"
+        android:layout_marginEnd="@dimen/space_large"
+        android:background="@drawable/bg_search_field"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/space_normal"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:paddingHorizontal="@dimen/space_normal"
+        android:paddingVertical="@dimen/space_small"
+        android:textAppearance="@style/AppTextAppearance"
+        app:layout_constraintEnd_toStartOf="@id/tv_cancel"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_search" />
+
+    <ImageView
+        android:id="@+id/iv_clear_search"
+        android:layout_width="@dimen/icon_size_small"
+        android:layout_height="@dimen/icon_size_small"
+        android:layout_marginEnd="@dimen/space_small"
+        android:padding="@dimen/space_small"
+        android:src="@drawable/ic_clear"
+        app:layout_constraintBottom_toBottomOf="@id/et_search"
+        app:layout_constraintEnd_toEndOf="@id/et_search"
+        app:layout_constraintTop_toTopOf="@id/et_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_crypto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        tools:listitem="@layout/item_crypto" />
+
+    <TextView
+        android:id="@+id/tv_no_results"
+        style="@style/EmptyResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_records"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

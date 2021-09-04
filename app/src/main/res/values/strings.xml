@@ -3,4 +3,9 @@
 
     <string name="favorite">Favorite</string>
     <string name="btc">BTC</string>
+    <string name="search">Search</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_records">No records found</string>
+    <string name="balance">Balance</string>
+    <string name="add_favorite">Add Favorite</string>
 </resources>

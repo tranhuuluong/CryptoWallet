@@ -22,4 +22,12 @@ interface CryptoDao {
         deleteAll()
         insert(items)
     }
+
+    @Query(
+        """
+        SELECT * FROM ${CryptoEntity.TABLE_NAME}
+        WHERE ${CryptoEntity.COLUMN_ID} LIKE :keyword
+        """
+    )
+    fun search(keyword: String): Flow<List<CryptoEntity>>
 }

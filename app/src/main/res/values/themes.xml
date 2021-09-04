@@ -37,4 +37,13 @@
     <style name="AppTextAppearance.Thin">
         <item name="android:fontFamily">@font/sofia_light</item>
     </style>
+
+    <style name="EmptyResults">
+        <item name="android:drawablePadding">@dimen/space_large</item>
+        <item name="android:drawableTop">@drawable/ic_no_items_found_204</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAppearance">@style/AppTextAppearance.SemiBold</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
 </resources>

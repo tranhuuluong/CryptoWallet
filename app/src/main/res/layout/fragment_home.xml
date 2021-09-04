@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_large"
         android:layout_marginTop="@dimen/space_normal"
-        android:text="Balance"
+        android:text="@string/balance"
         android:textAllCaps="true"
         android:textAppearance="@style/AppTextAppearance.Thin"
         android:textColor="@color/white"

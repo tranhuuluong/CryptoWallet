@@ -10,7 +10,7 @@ import com.luongtran.cryptowallet.util.toCurrency
 fun CryptoEntity.toCrypto() = Crypto(
     baseName = id,
     buyPrice = buyPrice?.toCurrency() ?: "--",
-    sellPrice = sellPrice?.toString() ?: "--",
+    sellPrice = sellPrice?.toCurrency() ?: "--",
     icon = icon,
     name = name,
     isFavorite = false

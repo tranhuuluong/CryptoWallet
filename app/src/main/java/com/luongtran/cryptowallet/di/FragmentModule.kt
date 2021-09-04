@@ -11,7 +11,7 @@ import org.koin.dsl.module
  * Created by LuongTran on 31/08/2021.
  */
 val fragmentModule = module {
-    viewModel { SearchViewModel() }
+    viewModel { SearchViewModel(get()) }
     viewModel { HomeViewModel() }
     viewModel { BtcViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }

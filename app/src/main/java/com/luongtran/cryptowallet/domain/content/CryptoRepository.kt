@@ -10,4 +10,6 @@ interface CryptoRepository {
     suspend fun fetchPrices(counter: String)
 
     fun getPrices(): Flow<List<Crypto>>
+
+    fun search(keyword: String): Flow<List<Crypto>>
 }
