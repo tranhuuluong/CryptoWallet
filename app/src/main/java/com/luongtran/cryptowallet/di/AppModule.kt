@@ -82,5 +82,5 @@ val appModules = module {
 
 object Qualifiers {
     const val IO_DISPATCHER = "io-dispatcher"
-    const val USER_DATA_STORE = "user-data_store"
+    const val USER_DATA_STORE = "user-data-store"
 }
