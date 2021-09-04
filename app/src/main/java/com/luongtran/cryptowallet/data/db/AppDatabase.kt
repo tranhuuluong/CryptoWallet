@@ -18,10 +18,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun cryptoDao(): CryptoDao
 
     companion object {
-        private const val databaseName = "app-db"
-
         fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context, AppDatabase::class.java, databaseName)
+            return Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
                 .fallbackToDestructiveMigration()
                 .build()
         }
