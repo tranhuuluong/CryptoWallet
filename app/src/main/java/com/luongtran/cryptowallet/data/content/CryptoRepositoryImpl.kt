@@ -32,9 +32,11 @@ class CryptoRepositoryImpl(
         return if (keyword.isEmpty()) {
             cryptoDao.getAll()
         } else {
-            cryptoDao.search("%$keyword%")
+            cryptoDao.search(keyword.toDbQuery())
         }.map { list ->
             list.map { it.toCrypto() }
         }
     }
+
+    private fun String.toDbQuery() = "%$this%"
 }
