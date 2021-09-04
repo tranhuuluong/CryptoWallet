@@ -16,6 +16,10 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
     protected var binding: T? = null
 
+    private val errorDialog by lazy {
+        ConnectionErrorDialog()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = createViewBinding(inflater, container)
         return binding?.root
@@ -27,4 +31,10 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
     }
 
     abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?) : T
+
+    protected fun showError() {
+        if (errorDialog.dialog == null || errorDialog.dialog?.isShowing == false) {
+            errorDialog.show(requireActivity().supportFragmentManager, null)
+        }
+    }
 }

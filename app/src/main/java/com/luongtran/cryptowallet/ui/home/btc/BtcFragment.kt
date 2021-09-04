@@ -53,6 +53,10 @@ class BtcFragment : BaseListingFragment<FragmentBtcBinding>() {
 
         mainViewModel.fetchResult.observe(viewLifecycleOwner) { result ->
             binding?.swipeRefreshLayout?.isRefreshing = result.isLoading()
+
+            if (result.isError()) {
+                showError()
+            }
         }
     }
 }

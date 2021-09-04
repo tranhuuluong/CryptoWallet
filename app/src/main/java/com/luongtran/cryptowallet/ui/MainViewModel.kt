@@ -19,7 +19,7 @@ class MainViewModel(
 ) : ViewModel(), LifecycleObserver {
     private var shouldRefresh = false
 
-    private val _fetchFlow = MutableSharedFlow<Unit>()
+    private val _fetchFlow = MutableSharedFlow<Unit>(replay = 1)
 
     private val refreshPriceFlow = _fetchFlow
         .interval(REFRESH_INTERVAL)
@@ -33,11 +33,7 @@ class MainViewModel(
         flow {
             emit(Result.Loading)
 
-            fetchPricesUseCase(DEFAULT_COUNTER)
-
-            emit(Result.Success(Unit))
-        }.catch { e ->
-            emit(Result.Error(e))
+            emit(fetchPricesUseCase(DEFAULT_COUNTER))
         }
     }.asLiveData()
 

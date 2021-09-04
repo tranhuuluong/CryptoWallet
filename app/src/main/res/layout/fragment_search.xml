@@ -75,20 +75,10 @@
         android:layout_marginEnd="@dimen/space_small"
         android:padding="@dimen/space_small"
         android:src="@drawable/ic_clear"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/et_search"
         app:layout_constraintEnd_toEndOf="@id/et_search"
         app:layout_constraintTop_toTopOf="@id/et_search" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_crypto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/space_normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/et_search"
-        tools:listitem="@layout/item_crypto" />
 
     <TextView
         android:id="@+id/tv_no_results"
@@ -101,5 +91,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/background">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/space_normal"
+            tools:listitem="@layout/item_crypto" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

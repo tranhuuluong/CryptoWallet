@@ -45,15 +45,29 @@ class SearchFragment : BaseListingFragment<FragmentSearchBinding>() {
                 etSearch.text = null
             }
 
-            etSearch.doAfterTextChanged { keyword ->
-                ivClearSearch.isGone = keyword.isNullOrEmpty()
-                viewModel.search(keyword?.toString() ?: "")
+            etSearch.run {
+                doAfterTextChanged { keyword ->
+                    ivClearSearch.isGone = keyword.isNullOrEmpty()
+                    viewModel.search(keyword?.toString() ?: "")
+                }
+
+                setOnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        showKeyboard(v)
+                    }
+                }
+
+                requestFocus()
             }
 
             rvCrypto.run {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = cryptoAdapter
                 addItemDecoration(R.drawable.divider, RecyclerView.VERTICAL)
+            }
+
+            swipeRefreshLayout.setOnRefreshListener {
+                mainViewModel.refresh()
             }
         }
     }
@@ -62,6 +76,14 @@ class SearchFragment : BaseListingFragment<FragmentSearchBinding>() {
         viewModel.data.observe(viewLifecycleOwner) {
             binding?.tvNoResults?.isVisible = it.isNullOrEmpty()
             cryptoAdapter.submitList(it)
+        }
+
+        mainViewModel.fetchResult.observe(viewLifecycleOwner) {
+            binding?.swipeRefreshLayout?.isRefreshing = it.isLoading()
+
+            if (it.isError()) {
+                showError()
+            }
         }
     }
 

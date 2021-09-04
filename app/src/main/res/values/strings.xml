@@ -8,4 +8,7 @@
     <string name="no_records">No records found</string>
     <string name="balance">Balance</string>
     <string name="add_favorite">Add Favorite</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="connection_error_message">A network error has occurred. Please check your connection and try again</string>
+    <string name="got_it">Got it</string>
 </resources>
