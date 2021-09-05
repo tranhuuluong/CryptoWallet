@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 class FetchPriceUseCase(
     private val cryptoRepository: CryptoRepository,
     ioDispatcher: CoroutineDispatcher
-): UseCase<String, Unit>(ioDispatcher) {
+) : UseCase<String, Unit>(ioDispatcher) {
 
     override suspend fun execute(parameters: String) {
         cryptoRepository.fetchPrices(parameters)

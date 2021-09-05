@@ -19,7 +19,10 @@ class SearchUseCase(
     override fun execute(parameters: String): Flow<Result<List<Crypto>>> = flow {
         emit(Result.Loading)
 
-        val dataFlow = combine(cryptoRepository.search(parameters), userInfoRepository.getFavorites()) { data, favourites -> data to favourites }
+        val dataFlow = combine(
+            cryptoRepository.search(parameters),
+            userInfoRepository.getFavorites()
+        ) { data, favourites -> data to favourites }
             .map { (data, favourites) ->
                 data.map { crypto ->
                     crypto.copy(isFavorite = favourites.contains(crypto.baseName))

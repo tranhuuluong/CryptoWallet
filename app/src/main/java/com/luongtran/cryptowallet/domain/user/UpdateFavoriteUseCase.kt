@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 class UpdateFavoriteUseCase(
     private val userInfoRepository: UserInfoRepository,
     ioDispatcher: CoroutineDispatcher
-): UseCase<Pair<String, Boolean>, Unit>(ioDispatcher) {
+) : UseCase<Pair<String, Boolean>, Unit>(ioDispatcher) {
 
     override suspend fun execute(parameters: Pair<String, Boolean>) {
         userInfoRepository.updateFavorite(parameters.first, parameters.second)

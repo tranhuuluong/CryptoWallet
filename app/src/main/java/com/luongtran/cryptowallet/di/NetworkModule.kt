@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 val networkModule = module {
     single { createOkHttpClient() }
 
-    single { createWebService<CryptoService>(get(), "https://www.coinhako.com/") }
+    single { createWebService<CryptoService>(get(), getProperty(Properties.SERVER_URL)) }
 }
 
 private fun createOkHttpClient(): OkHttpClient {
@@ -30,4 +30,8 @@ inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     return retrofit.create(T::class.java)
+}
+
+object Properties {
+    const val SERVER_URL = "SERVER_URL"
 }

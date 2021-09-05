@@ -3,6 +3,7 @@ package com.luongtran.cryptowallet
 import android.app.Application
 import com.luongtran.cryptowallet.di.appModules
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -22,6 +23,7 @@ class MyApplication : Application() {
             androidLogger(Level.DEBUG)
             androidContext(this@MyApplication)
             modules(appModules)
+            androidFileProperties()
         }
     }
 }
