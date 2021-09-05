@@ -14,7 +14,7 @@ class PagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun createFragment(position: Int): Fragment {
         return when (Page.values()[position]) {
             Page.BTC -> BtcFragment()
-            Page.FAVORITE -> FavoriteFragment()
+            Page.FAVORITES -> FavoriteFragment()
         }
     }
 }

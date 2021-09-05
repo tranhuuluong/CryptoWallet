@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CryptoWallet</string>
 
-    <string name="favorite">Favorite</string>
+    <string name="favorites">Favorites</string>
     <string name="btc">BTC</string>
     <string name="search">Search</string>
     <string name="cancel">Cancel</string>

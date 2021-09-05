@@ -8,5 +8,5 @@ import com.luongtran.cryptowallet.R
  */
 enum class Page(@StringRes val textResId: Int) {
     BTC(R.string.btc),
-    FAVORITE(R.string.favorite)
+    FAVORITES(R.string.favorites)
 }
