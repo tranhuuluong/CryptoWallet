@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk build_versions.compile_versions
+    compileSdk 30
 
     defaultConfig {
         applicationId "com.luongtran.cryptowallet"
