@@ -1,6 +1,6 @@
 def build_versions = [:]
-build_versions.min_sdk = 31
-build_versions.target_sdk = 31
+build_versions.min_sdk = 21
+build_versions.target_sdk = 30
 build_versions.compile_versions = build_versions.target_sdk
 
 ext.build_versions = build_versions
@@ -23,8 +23,8 @@ versions.data_store = '1.0.0'
 versions.glide = '4.12.0'
 versions.retrofit = '2.9.0'
 versions.okhttp = '4.9.1'
-versions.koin = '3.2.2'
-versions.room = '2.4.0'
+versions.koin = '3.1.2'
+versions.room = '2.3.0'
 
 versions.junit = '4.13.2'
 versions.test_junit = '1.1.2'
